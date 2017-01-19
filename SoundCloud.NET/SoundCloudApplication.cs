@@ -18,27 +18,27 @@
 
 using System;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     /// SoundCloud application.
     /// </summary>
-    [DataContract]
     public class SoundCloudApplication
     {
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "name")]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         #region Links
 
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
-        [DataMember(Name = "permalink_url")]
+        [JsonProperty(PropertyName = "permalink_url")]
         public string PermalinkUrl { get; set; }
 
         #endregion Links

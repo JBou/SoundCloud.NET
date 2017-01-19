@@ -20,82 +20,82 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
-    [DataContract]
     public class Playlist : SoundCloudClient
     {
         #region Properties
 
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "created_at")]
+        [JsonProperty(PropertyName = "created_at")]
         private string _CreationDate;
         /// <summary>
         /// Gets or sets the comment's creation date.
         /// </summary>
         public DateTime CreationDate { get { return (DateTime.Parse(_CreationDate)); } set { _CreationDate = value.ToString(CultureInfo.InvariantCulture); } }
 
-        [DataMember(Name = "user_id")]
+        [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; set; }
 
-        [DataMember(Name = "duration")]
+        [JsonProperty(PropertyName = "duration")]
         public int Duration { get; set; }
 
-        [DataMember(Name = "sharing")]
+        [JsonProperty(PropertyName = "sharing")]
         public string Sharing { get; set; }
 
-        [DataMember(Name = "tag_list")]
+        [JsonProperty(PropertyName = "tag_list")]
         public string TagsList { get; set; }
 
-        [DataMember(Name = "permalink")]
+        [JsonProperty(PropertyName = "permalink")]
         public string Permalink { get; set; }
 
-        [DataMember(Name = "description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [DataMember(Name = "streamable")]
-        public bool Streamabale { get; set; }
+        [JsonProperty(PropertyName = "streamable")]
+        public bool? Streamable { get; set; }
 
-        [DataMember(Name = "downloadable")]
-        public bool Downloadable { get; set; }
+        [JsonProperty(PropertyName = "downloadable")]
+        public bool? Downloadable { get; set; }
 
-        [DataMember(Name = "genre")]
+        [JsonProperty(PropertyName = "genre")]
         public string Genre { get; set; }
 
-        [DataMember(Name = "release")]
+        [JsonProperty(PropertyName = "release")]
         public string Release { get; set; }
 
-        [DataMember(Name = "purchase_url")]
+        [JsonProperty(PropertyName = "purchase_url")]
         public string PurchaseUrl { get; set; }
 
-        [DataMember(Name = "label_id")]
+        [JsonProperty(PropertyName = "label_id")]
         public int? LabelId { get; set; }
 
-        [DataMember(Name = "label_name")]
+        [JsonProperty(PropertyName = "label_name")]
         public string LabelName { get; set; }
 
-        [DataMember(Name = "type")]
+        [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
-        [DataMember(Name = "playlist_type")]
+        [JsonProperty(PropertyName = "playlist_type")]
         public string PlaylistType { get; set; }
 
-        [DataMember(Name = "ean")]
+        [JsonProperty(PropertyName = "ean")]
         public string Ean { get; set; }
 
-        [DataMember(Name = "title")]
+        [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
-        [DataMember(Name = "release_year")]
+        [JsonProperty(PropertyName = "release_year")]
         public int? ReleaseYear { get; set; }
 
-        [DataMember(Name = "release_month")]
+        [JsonProperty(PropertyName = "release_month")]
         public int? ReleaseMonth { get; set; }
 
-        [DataMember(Name = "release_day")]
+        [JsonProperty(PropertyName = "release_day")]
         public int? ReleaseDay { get; set; }
 
         public DateTime RealeaseDate
@@ -109,22 +109,22 @@ namespace SoundCloud.NET
             }
         }
 
-        [DataMember(Name = "license")]
+        [JsonProperty(PropertyName = "license")]
         public string License { get; set; }
 
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
-        [DataMember(Name = "permalink_url")]
+        [JsonProperty(PropertyName = "permalink_url")]
         public string PermalinkUrl { get; set; }
 
-        [DataMember(Name = "artwork_url")]
+        [JsonProperty(PropertyName = "artwork_url")]
         public string ArtworkUrl { get; set; }
 
-        [DataMember(Name = "user")]
+        [JsonProperty(PropertyName = "user")]
         public User User { get; set; }
 
-        [DataMember(Name = "tracks")]
+        [JsonProperty(PropertyName = "tracks")]
         public List<Track> Tracks { get; set; }
 
         #endregion Public

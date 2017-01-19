@@ -64,10 +64,17 @@ namespace SoundCloud.NET
         /// </summary>
         /// 
         /// <param name="credentials">Required credentials for authentication.</param>
-        public SoundCloudClient(SoundCloudCredentials credentials)
+        public SoundCloudClient(SoundCloudCredentials credentials, String client_id = "")
         {
             Credentials = credentials;
-            SoundCloudClientID = credentials.ClientID;
+            if (String.IsNullOrEmpty(client_id))
+            {
+                SoundCloudClientID = credentials.ClientID;
+            }
+            else
+            {
+                SoundCloudClientID = client_id;
+            }
 
             EnableGZip = true;
         }

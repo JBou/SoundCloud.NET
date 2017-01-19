@@ -19,13 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     /// Connections represent the external profiles (like twitter, tumblr or facebook profiles and pages) that are connected to a SoundCloud user. The connection ids can be used to share tracks and playlists to social network.
     /// </summary>
-    [DataContract]
     public class Connection : SoundCloudClient
     {
         #region Properties
@@ -33,16 +33,16 @@ namespace SoundCloud.NET
         /// <summary>
         /// Gets or sets the connection id.
         /// </summary>
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the connection.
         /// </summary>
-        [DataMember(Name = "display_name")]
+        [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
-        [DataMember(Name = "created_at")]
+        [JsonProperty(PropertyName = "created_at")]
         private string creationDate;
         /// <summary>
         /// Gets or sets the connection creation date.
@@ -54,31 +54,31 @@ namespace SoundCloud.NET
         /// </summary>
         /// 
         /// <remarks>Service is one of the social networks supported by the sound cloud plateform.</remarks>
-        [DataMember(Name = "service")]
+        [JsonProperty(PropertyName = "service")]
         public string Service { get; set; }
         
         /// <summary>
         /// Gets or sets the connection type. <seealso cref="ConnectionType"/>.
         /// </summary>
-        [DataMember(Name = "type")]
+        [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets whether a new favorite will be published to the connection or not.
         /// </summary>
-        [DataMember(Name = "post_favorite")]
+        [JsonProperty(PropertyName = "post_favorite")]
         public bool PostFavorite { get; set; }
 
         /// <summary>
         /// Gets or sets whether a new post will be published to the connection or not.
         /// </summary>
-        [DataMember(Name = "post_publish")]
+        [JsonProperty(PropertyName = "post_publish")]
         public bool PostPublish { get; set; }
 
         /// <summary>
         /// Gets the connection uri.
         /// </summary>
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public Uri Uri { get; set; }
 
         #endregion Properties

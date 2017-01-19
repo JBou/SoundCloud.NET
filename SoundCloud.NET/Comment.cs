@@ -19,10 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
-    [DataContract]
+
     public class Comment : SoundCloudClient
     {
         #region Properties
@@ -30,16 +31,16 @@ namespace SoundCloud.NET
         /// <summary>
         /// Gets or sets the comment id.
         /// </summary>
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the track id.
         /// </summary>
-        [DataMember(Name = "track_id")]
+        [JsonProperty(PropertyName = "track_id")]
         public int TrackId { get; set; }
 
-        [DataMember(Name = "created_at")]
+        [JsonProperty(PropertyName = "created_at")]
         private string creationDate;
         /// <summary>
         /// Gets or sets the comment's creation date.
@@ -49,13 +50,13 @@ namespace SoundCloud.NET
         /// <summary>
         /// Gets or sets the position of the comment(milliseconds).
         /// </summary>
-        [DataMember(Name = "timestamp")]
+        [JsonProperty(PropertyName = "timestamp")]
         public int Timestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the body text of the comment.
         /// </summary>
-        [DataMember(Name = "body")]
+        [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
 
         #region Links
@@ -63,7 +64,7 @@ namespace SoundCloud.NET
         /// <summary>
         /// Gets or sets the uri of the comment.
         /// </summary>
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
         #endregion Links
@@ -73,13 +74,13 @@ namespace SoundCloud.NET
         /// <summary>
         /// Gets or sets the comment's user id.
         /// </summary>
-        [DataMember(Name = "user_id")]
+        [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; set; }
 
         /// <summary>
         /// Gets or sets the user informations.
         /// </summary>
-        [DataMember(Name = "user")]
+        [JsonProperty(PropertyName = "user")]
         public User User { get; set; }
 
         #endregion User

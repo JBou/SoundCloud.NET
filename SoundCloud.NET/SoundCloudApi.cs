@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
@@ -40,7 +41,7 @@ namespace SoundCloud.NET
             { ApiCommand.AuthorizationCodeFlow, new Uri("https://soundcloud.com/connect?scope=non-expiring&client_id={0}&response_type={1}&redirect_uri={2}") },
             { ApiCommand.UserAgentFlow,         new Uri("https://soundcloud.com/connect?client_id={0}&response_type=token&redirect_uri={1}") },
             { ApiCommand.UserCredentialsFlow,   new Uri("https://api.soundcloud.com/oauth2/token?client_id={0}&client_secret={1}&grant_type=password&username={2}&password={3}") },
-            { ApiCommand.RefreshToken,          new Uri("https://api.soundcloud.com/oauth2/token&client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}") },
+            { ApiCommand.RefreshToken,          new Uri("https://api.soundcloud.com/oauth2/token?client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}") },
 
             //Me
             { ApiCommand.Me,                    new Uri("https://api.soundcloud.com/me.json") },
@@ -65,10 +66,10 @@ namespace SoundCloud.NET
             { ApiCommand.UserFollowingsContact, new Uri("https://api.soundcloud.com/users/{0}/followings/{contact_id}.json") },
             { ApiCommand.UserFollowers,         new Uri("https://api.soundcloud.com/users/{0}/followers.json") },
             { ApiCommand.UserFollowersContact,  new Uri("https://api.soundcloud.com/users/{0}/followers/{1}.json?consumer_key={2}") },
-            { ApiCommand.UserFavorites,         new Uri("https://api.soundcloud.com/users/{0}/favorites.json") },
+            { ApiCommand.UserFavorites,         new Uri("https://api.soundcloud.com/users/{0}/favorites.json?linked_partitioning=1") },
             { ApiCommand.UserFavoritesTrack,    new Uri("https://api.soundcloud.com/users/{0}/favorites/{1}.json") },
             { ApiCommand.UserGroups,            new Uri("https://api.soundcloud.com/users/{0}/groups.json") },
-            { ApiCommand.UserPlaylists,         new Uri("https://api.soundcloud.com/users/{0}/playlists.json") },
+            { ApiCommand.UserPlaylists,         new Uri("https://api.soundcloud.com/users/{0}/playlists.json?linked_partitioning=1") },
 
             //Tracks
             { ApiCommand.Tracks,                new Uri("https://api.soundcloud.com/tracks.json") },
@@ -96,14 +97,22 @@ namespace SoundCloud.NET
 
             //Resolver
             { ApiCommand.Resolve,               new Uri("https://api.soundcloud.com/resolve.json?url={0}") },
+
         };
 
         #endregion Private Properties
 
         #region Shared Methods
 
-
-
+        /// <summary>
+        /// Executes an api action.
+        /// </summary>
+        /// 
+        /// <param name="uri">next_href uri</param>
+        public static T ApiActionNextHref<T>(String uri)
+        {
+            return ApiAction<T>(new Uri(uri));
+        }
 
         /// <summary>
         /// Executes an api action.
@@ -218,7 +227,7 @@ namespace SoundCloud.NET
                 //OnApiActionExecuting Event
                 OnApiActionExecuting(EventArgs.Empty);
 
-                response = (HttpWebResponse)request.GetResponse();
+                response = (HttpWebResponse)request.GetResponse(); //TODO Catch exception
 
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
                 {
@@ -251,7 +260,7 @@ namespace SoundCloud.NET
                     //OnApiActionExecuted Event
                     OnApiActionExecuted(args);
 
-                    return JsonSerializer.Deserialize<T>(json);
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
                 else if (response.StatusCode == HttpStatusCode.NotFound || response.StatusCode == HttpStatusCode.Unauthorized)
                 {

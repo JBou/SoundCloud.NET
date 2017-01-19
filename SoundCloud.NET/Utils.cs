@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web;
 
 namespace SoundCloud.NET
 {
@@ -95,12 +96,11 @@ namespace SoundCloud.NET
         }
         public static Uri UriAppendingQueryString(this Uri uri, string name, string value)
         {
-            return
-                new UriBuilder(uri)
-                    {
-                        Query = (uri.Query + "&" + name + "=" + value).TrimStart('&')
-                    }
-                    .Uri;
+            var uriBuilder = new UriBuilder(uri);
+            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+            query[name] = value;
+            uriBuilder.Query = query.ToString();
+            return uriBuilder.Uri;
         }
         public static Uri UriAppendingQueryString(this Uri uri, string querystring)
         {

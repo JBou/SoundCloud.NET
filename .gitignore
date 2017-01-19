@@ -1,5 +1,5 @@
 /SoundCloud.NET/bin
 /SoundCloud.NET/obj
 
-/SoundCloud.NET/*.suo
+/SoundCloud.NET/**.suo
 /Test

@@ -18,25 +18,25 @@
 
 using System;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     /// SoundCloud access token.
     /// </summary>
-    [DataContract]
     public class SoundCloudAccessToken
     {
-        [DataMember(Name = "access_token")]
+        [JsonProperty(PropertyName = "access_token")]
         public string AccessToken { get; set; }
 
-        [DataMember(Name = "expires_in")]
+        [JsonProperty(PropertyName = "expires_in")]
         public int ExpiresIn { get; set; }
 
-        [DataMember(Name = "scope")]
+        [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }
 
-        [DataMember(Name = "refresh_token")]
+        [JsonProperty(PropertyName = "refresh_token")]
         public string RefreshToken { get; set; }
     }
 }

@@ -21,21 +21,21 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     ///   SoundCloud track.
     /// </summary>
-    [DataContract]
-    public class Track : SoundCloudClient
+    public class Track
     {
         #region Properties
 
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "created_at")]
+        [JsonProperty(PropertyName = "created_at")]
         private string _CreationDate;
 
         public DateTime CreationDate
@@ -44,133 +44,133 @@ namespace SoundCloud.NET
             set { _CreationDate = value.ToString(CultureInfo.InvariantCulture); }
         }
 
-        [DataMember(Name = "user_id")]
+        [JsonProperty(PropertyName = "user_id")]
         public int UserId { get; set; }
 
-        [DataMember(Name = "duration")]
+        [JsonProperty(PropertyName = "duration")]
         public int Duration { get; set; }
 
-        [DataMember(Name = "commentable")]
+        [JsonProperty(PropertyName = "commentable")]
         public bool Commentable { get; set; }
 
-        [DataMember(Name = "state")]
+        [JsonProperty(PropertyName = "state")]
         public string State { get; set; }
 
-        [DataMember(Name = "sharing")]
+        [JsonProperty(PropertyName = "sharing")]
         public string Sharing { get; set; }
 
-        [DataMember(Name = "tag_list")]
+        [JsonProperty(PropertyName = "tag_list")]
         public string TagList { get; set; }
 
-        [DataMember(Name = "permalink")]
+        [JsonProperty(PropertyName = "permalink")]
         public string Permalink { get; set; }
 
-        [DataMember(Name = "description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [DataMember(Name = "streamable")]
+        [JsonProperty(PropertyName = "streamable")]
         public bool Streamable { get; set; }
 
-        [DataMember(Name = "downloadable")]
+        [JsonProperty(PropertyName = "downloadable")]
         public bool Downloadable { get; set; }
 
-        [DataMember(Name = "genre")]
+        [JsonProperty(PropertyName = "genre")]
         public string Genre { get; set; }
 
-        [DataMember(Name = "release")]
+        [JsonProperty(PropertyName = "release")]
         public string Release { get; set; }
 
-        [DataMember(Name = "purchase_url")]
+        [JsonProperty(PropertyName = "purchase_url")]
         public string PurchaseUrl { get; set; }
 
-        [DataMember(Name = "label_id")]
+        [JsonProperty(PropertyName = "label_id")]
         public string LabelId { get; set; }
 
-        [DataMember(Name = "label_name")]
+        [JsonProperty(PropertyName = "label_name")]
         public string LabelName { get; set; }
 
-        [DataMember(Name = "isrc")]
+        [JsonProperty(PropertyName = "isrc")]
         public string Isrc { get; set; }
 
-        [DataMember(Name = "video_url")]
+        [JsonProperty(PropertyName = "video_url")]
         public string VideoUrl { get; set; }
 
-        [DataMember(Name = "track_type")]
+        [JsonProperty(PropertyName = "track_type")]
         public string TrackType { get; set; }
 
-        [DataMember(Name = "key_signature")]
+        [JsonProperty(PropertyName = "key_signature")]
         public string KeySignature { get; set; }
 
-        [DataMember(Name = "bpm")]
+        [JsonProperty(PropertyName = "bpm")]
         public string Bpm { get; set; }
 
-        [DataMember(Name = "title")]
+        [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
-        [DataMember(Name = "release_year")]
+        [JsonProperty(PropertyName = "release_year")]
         public string ReleaseYear { get; set; }
 
-        [DataMember(Name = "release_month")]
+        [JsonProperty(PropertyName = "release_month")]
         public string ReleaseMonth { get; set; }
 
-        [DataMember(Name = "release_day")]
+        [JsonProperty(PropertyName = "release_day")]
         public string ReleaseDay { get; set; }
 
-        [DataMember(Name = "original_format")]
+        [JsonProperty(PropertyName = "original_format")]
         public string OriginalFormat { get; set; }
 
-        [DataMember(Name = "license")]
+        [JsonProperty(PropertyName = "license")]
         public string License { get; set; }
 
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
-        [DataMember(Name = "permalink_url")]
+        [JsonProperty(PropertyName = "permalink_url")]
         public string PermalinkUrl { get; set; }
 
-        [DataMember(Name = "artwork_url")]
+        [JsonProperty(PropertyName = "artwork_url")]
         public string Artwork { get; set; }
 
-        [DataMember(Name = "waveform_url")]
+        [JsonProperty(PropertyName = "waveform_url")]
         public string WaveForm { get; set; }
 
-        [DataMember(Name = "user")]
+        [JsonProperty(PropertyName = "user")]
         public User User { get; set; }
 
-        [DataMember(Name = "stream_url")]
+        [JsonProperty(PropertyName = "stream_url")]
         public string StreamUrl { get; set; }
 
-        [DataMember(Name = "download_url")]
+        [JsonProperty(PropertyName = "download_url")]
         public string DownloadUrl { get; set; }
 
-        [DataMember(Name = "downloads_remaining")]
+        [JsonProperty(PropertyName = "downloads_remaining")]
         public int DownloadsRemaining { get; set; }
 
-        [DataMember(Name = "secret_token")]
+        [JsonProperty(PropertyName = "secret_token")]
         public string SecretToken { get; set; }
 
-        [DataMember(Name = "secret_uri")]
+        [JsonProperty(PropertyName = "secret_uri")]
         public string SecretUri { get; set; }
 
-        [DataMember(Name = "user_playback_count")]
+        [JsonProperty(PropertyName = "user_playback_count")]
         public int UserPlaybackCount { get; set; }
 
-        [DataMember(Name = "user_favorite")]
+        [JsonProperty(PropertyName = "user_favorite")]
         public bool UserFavorite { get; set; }
 
-        [DataMember(Name = "playback_count")]
+        [JsonProperty(PropertyName = "playback_count")]
         public int PlaybackCount { get; set; }
 
-        [DataMember(Name = "download_count")]
+        [JsonProperty(PropertyName = "download_count")]
         public int DownloadCount { get; set; }
 
-        [DataMember(Name = "favoritings_count")]
+        [JsonProperty(PropertyName = "favoritings_count")]
         public int FavoritingsCount { get; set; }
 
-        [DataMember(Name = "comment_count")]
+        [JsonProperty(PropertyName = "comment_count")]
         public int CommentsCount { get; set; }
 
-        [DataMember(Name = "attachments_uri")]
+        [JsonProperty(PropertyName = "attachments_uri")]
         public string AttachmentUri { get; set; }
 
         #endregion Properties

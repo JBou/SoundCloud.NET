@@ -13,9 +13,10 @@ namespace Test
         //enter username and password a soundcloud user, e.g. your own credentials
         private const string Username = "username";
         private const string Password = "password";
-        
+
         static void Main(string[] args)
         {
+
             //fill credentials
             SoundCloudCredentials credentials = new SoundCloudCredentials(ClientId, ClientSecret, Username, Password);
             //create client
@@ -28,16 +29,22 @@ namespace Test
             {
                 //Fetch current user info
                 var mySelf = User.Me();
-                //search for tracks
-                string searchFor = "electro swing";
-                //execute search
-                List<Track> searchResults = Track.Search(searchFor, null, Filter.All, "", "", null, null, null, null, DateTime.MinValue, DateTime.Now, null, null, null);
-                //iterate in tracks and fetch details again
-                foreach (int trackId in searchResults.Select(track => track.Id))
+
+                PartitionList<Track> likes = mySelf.GetFavorites();
+                PartitionList<Playlist> playlists = mySelf.GetPlaylists();
+
+                foreach (Track track in likes.Collection)
                 {
-                    Track track = Track.GetTrack(trackId);
-                    //here you can play a track or do something else ;)
+                    Console.WriteLine(track.Title);
                 }
+                while (likes.GetNextPartition())
+                {
+                    foreach (Track track in likes.Collection)
+                    {
+                            Console.WriteLine(track.Title);
+                    }
+                }
+
             }
             //wait for user input
             Console.ReadLine();

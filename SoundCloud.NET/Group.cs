@@ -20,49 +20,49 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     /// SoundCloud Group.
     /// </summary>
-    [DataContract]
     public class Group : SoundCloudClient
     {
         #region Properties
 
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "created_at")]
+        [JsonProperty(PropertyName = "created_at")]
         private string _CreationDate;
         /// <summary>
         /// Gets or sets the comment's creation date.
         /// </summary>
         public DateTime CreationDate { get { return (DateTime.Parse(_CreationDate)); } set { _CreationDate = value.ToString(CultureInfo.InvariantCulture); } }
 
-        [DataMember(Name = "permalink")]
+        [JsonProperty(PropertyName = "permalink")]
         public string Permalink { get; set; }
 
-        [DataMember(Name = "name")]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "short_description")]
+        [JsonProperty(PropertyName = "short_description")]
         public string ShortDescription { get; set; }
 
-        [DataMember(Name = "description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
-        [DataMember(Name = "artwork_url")]
+        [JsonProperty(PropertyName = "artwork_url")]
         public string Artwork { get; set; }
 
-        [DataMember(Name = "permalink_url")]
+        [JsonProperty(PropertyName = "permalink_url")]
         public string PermalinkUrl { get; set; }
 
-        [DataMember(Name = "creator")]
+        [JsonProperty(PropertyName = "creator")]
         public User User { get; set; }
 
         #endregion Properties

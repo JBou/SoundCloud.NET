@@ -66,7 +66,7 @@ namespace SoundCloud.NET
         MeGroups,
 
         MePlaylists,
-         
+
         MeConnections,
 
         Users,
@@ -125,6 +125,8 @@ namespace SoundCloud.NET
 
         Playlist,
 
-        Resolve
+        Resolve,
+
+        NextHref
     }
 }

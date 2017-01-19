@@ -18,87 +18,87 @@
 
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SoundCloud.NET
 {
     /// <summary>
     /// SoundCloud user.
     /// </summary>
-    [DataContract]
     public class User : SoundCloudClient
     {
         #region Properties
 
-        [DataMember(Name = "id")]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "permalink")]
+        [JsonProperty(PropertyName = "permalink")]
         public string Permalink { get; set; }
 
-        [DataMember(Name = "username")]
+        [JsonProperty(PropertyName = "username")]
         public string UserName { get; set; }
 
-        [DataMember(Name = "uri")]
+        [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
-        [DataMember(Name = "permalink_url")]
+        [JsonProperty(PropertyName = "permalink_url")]
         public string PermalinkUrl { get; set; }
 
-        [DataMember(Name = "avatar_url")]
+        [JsonProperty(PropertyName = "avatar_url")]
         public string Avatar { get; set; }
 
-        [DataMember(Name = "country")]
+        [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
-        [DataMember(Name = "full_name")]
+        [JsonProperty(PropertyName = "full_name")]
         public string FullName { get; set; }
 
-        [DataMember(Name = "city")]
+        [JsonProperty(PropertyName = "city")]
         public string City { get; set; }
 
-        [DataMember(Name = "description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [DataMember(Name = "discogs_name")]
+        [JsonProperty(PropertyName = "discogs_name")]
         public string Discogs { get; set; }
 
-        [DataMember(Name = "myspace_name")]
+        [JsonProperty(PropertyName = "myspace_name")]
         public string Myspace { get; set; }
 
-        [DataMember(Name = "website")]
+        [JsonProperty(PropertyName = "website")]
         public string Website { get; set; }
 
-        [DataMember(Name = "website_title")]
+        [JsonProperty(PropertyName = "website_title")]
         public string WebsiteTitle { get; set; }
 
-        [DataMember(Name = "online")]
+        [JsonProperty(PropertyName = "online")]
         public bool? IsOnline { get; set; }
 
-        [DataMember(Name = "track_count")]
+        [JsonProperty(PropertyName = "track_count")]
         public int Tracks { get; set; }
 
-        [DataMember(Name = "playlist_count")]
+        [JsonProperty(PropertyName = "playlist_count")]
         public int Playlists { get; set; }
 
-        [DataMember(Name = "followers_count")]
+        [JsonProperty(PropertyName = "followers_count")]
         public int Followers { get; set; }
 
-        [DataMember(Name = "followings_count")]
+        [JsonProperty(PropertyName = "followings_count")]
         public int Followings { get; set; }
 
-        [DataMember(Name = "public_favorites_count")]
+        [JsonProperty(PropertyName = "public_favorites_count")]
         public int Favorites { get; set; }
 
-        [DataMember(Name = "plan")]
+        [JsonProperty(PropertyName = "plan")]
         public string Plan { get; set; }
 
-        [DataMember(Name = "private_tracks_count")]
+        [JsonProperty(PropertyName = "private_tracks_count")]
         public int PrivateTracks { get; set; }
 
-        [DataMember(Name = "private_playlists_count")]
+        [JsonProperty(PropertyName = "private_playlists_count")]
         public int PrivatePlaylists { get; set; }
 
-        [DataMember(Name = "primary_email_confirmed")]
+        [JsonProperty(PropertyName = "primary_email_confirmed")]
         public bool EmailConfirmed { get; set; }
 
         #endregion Properties
@@ -172,9 +172,9 @@ namespace SoundCloud.NET
         /// <summary>
         /// Returns a collection of tracks favorited by the user with user id.
         /// </summary>
-        public List<Track> GetFavorites()
+        public PartitionList<Track> GetFavorites()
         {
-            return SoundCloudApi.ApiAction<List<Track>>(ApiCommand.UserFavorites, Id);
+           return SoundCloudApi.ApiAction<PartitionList<Track>>(ApiCommand.UserFavorites, Id);
         }
 
         /// <summary>
@@ -188,9 +188,9 @@ namespace SoundCloud.NET
         /// <summary>
         /// Returns a collection of playlists created by user with user id
         /// </summary>
-        public List<Playlist> GetPlaylists(int id)
+        public PartitionList<Playlist> GetPlaylists()
         {
-            return SoundCloudApi.ApiAction<List<Playlist>>(ApiCommand.UserPlaylists, Id);
+            return SoundCloudApi.ApiAction<PartitionList<Playlist>>(ApiCommand.UserPlaylists, Id);
         }
 
         #endregion Public Methods
